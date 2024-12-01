@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <img src="assets/images/logo.png" alt="Logo" class="search-logo"> <!-- Logo heading -->
+    <div class="container">
+        <div class="header">
+            <div>
+                <img id="menu-button" src="assets/images/menu.png" alt="Menu" onclick="toggleMenu()"> <!-- menu hidden button (photo) -->
+                <div id="hidden-menu" class="hidden-menu">
+                    <a href="javascript:void(0);" id="random-recipe">Random Recipe</a>
+                    <a href="community.html">Community</a>
+                    <a href="feedback.html">Give Us Feedback</a>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search">
+                <!-- Filter function for the search bar -->
+                <div class="filters">
+                    <select id="categoryFilter">
+                        <!-- different type of cuisine -->
+                        <option value="">Select Category</option>
+                        <option value="Chinese cuisine">Chinese cuisine</option>
+                        <option value="French cuisine">French cuisine</option>
+                        <option value="Japanese cuisine">Japanese cuisine</option>
+                        <option value="German cuisine">German cuisine</option>
+                        <option value="Italian cuisine">Italian cuisine</option>
+                        <option value="Thai cuisine">Thai cuisine</option>
+                    </select>
+                    <input type="checkbox" id="glutenFree" /> Gluten-Free
+                    <input type="checkbox" id="vegan" /> Vegan
+                    <input type="checkbox" id="dessert" /> Dessert
+                </div>
+            </div>
+        </div>
+
+        <!-- Tag Section -->
+        <p class="recipe-tag">Example: Fish, Butter, Lemon (press "Enter" and wait)</p>
+
+        <!-- Recipe Results Section -->
+        <div id="recipe-result">
+            <div class="recipe-content">
+                <!-- Generated recipe content will be inserted here -->
+                <h3>Recommended Recipes:</h3>
+                <p>This is where the AI-generated recipes will appear.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Animation -->
+    <div id="loading-container" style="display: none;">
+        <div id="loading-animation"></div>
+        <div class="typewriter">
+            <div class="slide"><i></i></div>
+            <div class="paper"></div>
+            <div class="keyboard"></div>
+        </div>
+    </div>
+
+    <!-- link with js -->
+    <script src="js/script.js"></script>
+    
+
+</body>
+</html>

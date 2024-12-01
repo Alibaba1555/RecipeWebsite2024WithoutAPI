@@ -1,0 +1,541 @@
+/*********************************************
+
+Here is a description of any special CSS used.
+In this case it's just padding and margin to 0
+and then centring the canvas (and anything else)
+using the CSS Grid.
+
+Also hides overflow.
+
+**********************************************/
+
+.recipe-tag {
+    font-size: 1.5em;              
+    font-family: 'Playfair Display', 'Baskerville', serif; 
+    font-style: italic;            
+    font-weight: 600;              
+    margin-top: 10px;              
+    color: #000000;               
+    letter-spacing: 0.05em;        
+    background-color: #fff7e1;     
+    border-radius: 20px;           
+    padding: 15px 30px;            
+    display: inline-block;         
+    text-align: center;            
+    line-height: 1.5;              
+    position: relative;            
+    left: 50%;                     
+    transform: translateX(-50%);   
+    width: fit-content;            
+}
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F8E8C1;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;         
+  height: 100vh;              
+}
+
+.search-logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;         
+  position: relative;         
+  top: 100;                      
+  background-color: rgba(255, 247, 225, 0.92); 
+  padding: 10px;               
+  border-radius: 38px;        
+}
+
+
+    
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../assets/images/backgroundtexture.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5; /* transparent */
+        z-index: -1; /* Make sure the background layer is behind the page content */
+    }
+    /* Pages can be turned up and down (not fixed) */
+    html, body {
+        overflow: auto;
+        height: 100%;
+        min-height: calc(100% + 238px);  /* Add 50px extra space */
+        margin: 0;
+      }
+      
+      
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #fff7e1;
+        padding: 65px;
+        position: relative;
+        border-radius: 60px;
+        width: 90%;
+        max-width: 2400px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #menu-button {
+        margin-right: 80px; /* Add spacing to the right side of the menu button */
+    }
+
+    .search-container {
+      display: flex;
+      flex-direction: column;  
+      align-items: center;     
+      justify-content: center; 
+      height: 100vh;           
+  }
+  
+  .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 100%;              
+      height: 50px;           
+  }
+  
+
+    .search-bar input {
+      border: none;
+      flex-grow: 1;
+      outline: none;
+      font-size: 1.5rem;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    
+    
+    
+
+    .hidden-menu {
+      display: none; /* Hide the menu initially */
+      position: fixed;
+      top: 0;
+      left: -250px; /* Initially hide the menu off-screen */
+      width: 200px; /* Width of the menu */
+      height: 100vh; /* Full height */
+      background-color: #fff7e1;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      z-index: 1000;
+      transition: left 0.3s ease; /* Smooth sliding transition */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; /* Distribute the space evenly between items */
+      align-items: center; /* Center-align items horizontally */
+  }
+  
+  .hidden-menu.active {
+      display: block;
+      left: 0; /* Slide the menu into view */
+  }
+  
+  /* Style for links in the menu */
+  .hidden-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 16px;
+      color: #333;
+      text-decoration: none;
+      width: 100%; /* Ensure the link takes up full width */
+      text-align: center; /* Center the text horizontally */
+      flex-grow: 1; /* Make the items grow evenly to take the available space */
+  }
+  
+  .hidden-menu a:hover {
+      background-color: #f0e6cc;
+  }
+  
+
+    .tags {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+    }
+
+    .tags img {
+        width: 40px;
+    }
+
+
+
+/* recipes section */
+#recipe-result {
+    background-color: #fff7e1; 
+    border-radius: 50px; 
+    padding: 20px; 
+    margin-top: 20px; /* Top margin */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+    display: none; /* Hidden initially */
+}
+
+#recipe-result h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#recipe-result h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #555;
+}
+
+#recipe-result .step {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    line-height: 1.5;
+}
+
+
+/* loading animation */
+/* From Uiverse.io by Nawsome */ 
+.typewriter {
+    --blue: #5C86FF;
+    --blue-dark: #275EFE;
+    --key: #fff;
+    --paper: #EEF0FD;
+    --text: #D3D4EC;
+    --tool: #FBC56C;
+    --duration: 3s;
+    position: relative;
+    -webkit-animation: bounce05 var(--duration) linear infinite;
+    animation: bounce05 var(--duration) linear infinite;
+  }
+  
+  .typewriter .slide {
+    width: 92px;
+    height: 20px;
+    border-radius: 3px;
+    margin-left: 14px;
+    transform: translateX(14px);
+    background: linear-gradient(var(--blue), var(--blue-dark));
+    -webkit-animation: slide05 var(--duration) ease infinite;
+    animation: slide05 var(--duration) ease infinite;
+  }
+  
+  .typewriter .slide:before, .typewriter .slide:after,
+  .typewriter .slide i:before {
+    content: "";
+    position: absolute;
+    background: var(--tool);
+  }
+  
+  .typewriter .slide:before {
+    width: 2px;
+    height: 8px;
+    top: 6px;
+    left: 100%;
+  }
+  
+  .typewriter .slide:after {
+    left: 94px;
+    top: 3px;
+    height: 14px;
+    width: 6px;
+    border-radius: 3px;
+  }
+  
+  .typewriter .slide i {
+    display: block;
+    position: absolute;
+    right: 100%;
+    width: 6px;
+    height: 4px;
+    top: 4px;
+    background: var(--tool);
+  }
+  
+  .typewriter .slide i:before {
+    right: 100%;
+    top: -2px;
+    width: 4px;
+    border-radius: 2px;
+    height: 14px;
+  }
+  
+  .typewriter .paper {
+    position: absolute;
+    left: 24px;
+    top: -26px;
+    width: 40px;
+    height: 46px;
+    border-radius: 5px;
+    background: var(--paper);
+    transform: translateY(46px);
+    -webkit-animation: paper05 var(--duration) linear infinite;
+    animation: paper05 var(--duration) linear infinite;
+  }
+  
+  .typewriter .paper:before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 7px;
+    border-radius: 2px;
+    height: 4px;
+    transform: scaleY(0.8);
+    background: var(--text);
+    box-shadow: 0 12px 0 var(--text), 0 24px 0 var(--text), 0 36px 0 var(--text);
+  }
+  
+  .typewriter .keyboard {
+    width: 120px;
+    height: 56px;
+    margin-top: -10px;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .typewriter .keyboard:before, .typewriter .keyboard:after {
+    content: "";
+    position: absolute;
+  }
+  
+  .typewriter .keyboard:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 7px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    transform: perspective(10px) rotateX(2deg);
+    transform-origin: 50% 100%;
+  }
+  
+  .typewriter .keyboard:after {
+    left: 2px;
+    top: 25px;
+    width: 11px;
+    height: 4px;
+    border-radius: 2px;
+    box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    -webkit-animation: keyboard05 var(--duration) linear infinite;
+    animation: keyboard05 var(--duration) linear infinite;
+  }
+  
+  @keyframes bounce05 {
+    85%, 92%, 100% {
+      transform: translateY(0);
+    }
+  
+    89% {
+      transform: translateY(-4px);
+    }
+  
+    95% {
+      transform: translateY(2px);
+    }
+  }
+  
+  @keyframes slide05 {
+    5% {
+      transform: translateX(14px);
+    }
+  
+    15%, 30% {
+      transform: translateX(6px);
+    }
+  
+    40%, 55% {
+      transform: translateX(0);
+    }
+  
+    65%, 70% {
+      transform: translateX(-4px);
+    }
+  
+    80%, 89% {
+      transform: translateX(-12px);
+    }
+  
+    100% {
+      transform: translateX(14px);
+    }
+  }
+  
+  @keyframes paper05 {
+    5% {
+      transform: translateY(46px);
+    }
+  
+    20%, 30% {
+      transform: translateY(34px);
+    }
+  
+    40%, 55% {
+      transform: translateY(22px);
+    }
+  
+    65%, 70% {
+      transform: translateY(10px);
+    }
+  
+    80%, 85% {
+      transform: translateY(0);
+    }
+  
+    92%, 100% {
+      transform: translateY(46px);
+    }
+  }
+  
+  @keyframes keyboard05 {
+    5%, 12%, 21%, 30%, 39%, 48%, 57%, 66%, 75%, 84% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    9% {
+      box-shadow: 15px 2px 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    18% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 2px 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    27% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 12px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    36% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 12px 0 var(--key), 60px 12px 0 var(--key), 68px 12px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    45% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 2px 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    54% {
+      box-shadow: 15px 0 0 var(--key), 30px 2px 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    63% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 12px 0 var(--key);
+    }
+  
+    72% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 2px 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  
+    81% {
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 12px 0 var(--key), 52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+    }
+  }
+
+/* Center loading animation */
+#loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    z-index: 9999; /* Ensures it overlays the rest of the content */
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* filter */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+  width: 108%; /* Takes up 108 percent of the search bar's full width */
+}
+
+.filters select,
+.filters input {
+  flex: 2; /* Increase the proportion of each element and make it longer */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.filters input[type="checkbox"] {
+  flex: 0.5; /* Reduce the width of the checkbox */
+  transform: scale(1.2);
+  accent-color: #007bff;
+  cursor: pointer;
+}
+
+.filters select:hover,
+.filters input:hover {
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.filters select:focus,
+.filters input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+}
+
+
+@media (max-width: 600px) {
+  .filters {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filters select,
+  .filters input {
+    flex: unset;
+    width: 100%; /* Each filter takes up one line on a small screen */
+  }
+
+  .filters input[type="checkbox"] {
+    flex: unset;
+  }
+}
+
+
+
+
+
+

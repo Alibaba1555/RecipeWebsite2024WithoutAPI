@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Detail</title>
+    <link rel="stylesheet" href="css/styleRecipe.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="community.html" id="mainpage-link">
+                <h1>Community</h1>
+            </a>
+        </header>
+
+        <div id="recipe-detail" class="recipe-detail">
+            <!-- Recipe details will be dynamically added here -->
+            <h2>Recipe Title</h2>
+            <p>This is a placeholder for recipe details. Replace with dynamic content.</p>
+        </div>
+
+        <div id="rating-section">
+            <h2>Rate this Recipe (out of 50)</h2>
+            <input type="number" id="rating" min="0" max="50" placeholder="Rate this recipe">
+            <button id="submit-rating">Submit Rating</button>
+            <p id="rating-message"></p> <!-- Message for users who have rated -->
+            <p id="average-rating">Average Rating: 0/50</p> <!-- Display average rating -->
+        </div>
+
+        <div id="comments-section">
+            <h2>Comments</h2>
+            <textarea id="comment" placeholder="Write your comment"></textarea>
+            <button id="submit-comment">Submit Comment</button>
+
+            <div id="comments-list">
+                <ul>
+                    <!-- Dynamically load comments here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/recipeDetail.js"></script>
+</body>
+</html>

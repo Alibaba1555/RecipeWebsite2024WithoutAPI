@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link rel="stylesheet" href="css/styleCommunity.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="mainpage-link">Community</h1> <!-- Click title to go back to main page -->
+            <button id="add-recipe-btn">Add New Recipe</button>
+        </header>
+        
+        <div id="recipe-form" class="recipe-form hidden">
+            <h2>Add New Recipe</h2>
+            <form id="new-recipe-form">
+                <!-- Recipe form -->
+                <label for="name">Recipe Name:</label>
+                <input type="text" id="name" required placeholder="Enter recipe name">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+                
+                <label for="steps">Recipe Steps:</label>
+                <textarea id="steps" required placeholder="Enter recipe steps"></textarea>
+                
+                <label for="image">Recipe Image (Optional):</label>
+                <input type="file" id="image">
+                
+                <button type="submit">Submit Recipe</button>
+                <button type="button" id="cancel-btn">Cancel</button>
+            </form>
+        </div>
+
+        <div id="recipe-list" class="recipe-list">
+            <!-- Dynamically load recipe list -->
+        </div>
+    </div>
+
+    <script src="js/scriptCommunity.js"></script>
+</body>
+</html>

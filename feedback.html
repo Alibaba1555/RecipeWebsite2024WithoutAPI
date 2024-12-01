@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Us Feedback</title>
+    <link rel="stylesheet" href="css/styleFeedback.css">
+    <link rel="stylesheet" href="js/scriptFeedback.js">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Give Us Feedback</h1>
+            <a href="Mainpage.html" id="mainpage-btn">Back to Main Page</a>
+        </header>
+
+        <div id="feedback-section" class="feedback-section">
+            <h2>We Value Your Feedback</h2>
+            <p>Please let me know you think!</p>
+
+            <!-- Feedback Form -->
+            <form id="feedback-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="message">Your Feedback:</label>
+                <textarea id="message" placeholder="Write your feedback" rows="5" required></textarea>
+
+                <button type="submit">Submit Feedback</button>
+            </form>
+
+            <!-- Feedback Confirmation Message -->
+            <p id="feedback-message" style="display: none;">Thank you for your feedback!</p>
+        </div>
+    </div>
+
+    <script>
+        // Wait until the DOM content is fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select the feedback form and feedback message container
+            const feedbackForm = document.getElementById('feedback-form');
+            const feedbackMessage = document.getElementById('feedback-message');
+
+            feedbackForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                 // Check if all fields are filled in
+                if (name && email && message) {
+                    console.log('Feedback submitted:', { name, email, message });
+
+                    feedbackMessage.style.display = 'block';
+
+                    feedbackForm.reset();
+                } else {
+                    // Show an alert if any fields are left empty
+                    alert('Please fill in all fields.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
